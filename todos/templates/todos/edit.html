@@ -1,0 +1,18 @@
+{% extends 'todos/base.html' %}
+
+{% block title %}
+{{todo.pk}}번째 글 수정하기
+{% endblock title %}
+  
+
+
+{% block content %}
+  <h1>{{todo.pk}}번째 글 수정하기</h1>
+  <form action="{% url 'todos:update' todo.id %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name ='title' value="{{todo.title}}">
+    <input type="date" name ='due-date' value="{{todo.due_date|date:'Y-m-d'}}">
+    <input type="submit">
+  </form>
+{% endblock content %}
+  
